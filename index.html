@@ -2,27 +2,26 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <title>Para Kenia ❤️</title>
     <style>
         body {
-            background-image: url('IMG-20251206-WA0018.jpg'); 
-    background-size: con; /* Esto hace que la imagen cubra toda la pantalla */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se duplique */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-           
-        
+            /* 1. FONDO con la ruta kenia/ */
+            background-image: url('kenia/IMG-20251206-WA0018.jpg'); 
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
         }
 
-        .container {
-            position: relative;
-        }
-
+        .container { position: relative; }
         #check { display: none; }
 
+        /* --- SOBRE --- */
         .envelope {
             position: relative;
             width: 300px;
@@ -32,149 +31,114 @@
             cursor: pointer;
             transform-style: preserve-3d;
         }
+
+        /* --- FOTOS QUE CAEN --- */
         .falling-img {
             position: absolute;
-            top: -150px; /* Empiezan arriba, fuera de la pantalla */
-            width: 100px; /* Tamaño base */
+            top: -150px;
+            width: 100px;
             height: auto;
             border: 3px solid white;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            z-index: 100; /* Caen POR ENCIMA de todo */
+            z-index: 100;
             cursor: pointer;
-            transition: transform 0.3s ease; /* Suaviza el agrandado */
+            transition: transform 0.3s ease;
         }
-      .falling-img:hover {
-            /* 1. Agrandar 3 VECES (scale 3) */
-            /* Usamos !important para OBLIGAR a que esto ocurra */
+
+        /* EFECTO AL PASAR EL MOUSE (AGRANDAR X3) */
+        .falling-img:hover {
             transform: scale(3) rotate(0deg) !important; 
-            
-            /* 2. Ponerla MUY por encima de todo lo demás */
             z-index: 999 !important; 
-            
-            /* 3. ¡CRUCIAL! PAUSAR LA CAÍDA */
-            /* Si no se pausa, se escapa del mouse */
             animation-play-state: paused !important;
-            
-            /* 4. Mejoras visuales al agrandar: */
-            /* Sombra más fuerte para efecto "levantado" */
             box-shadow: 0 20px 40px rgba(0,0,0,0.6) !important;
-            /* Transición suave para que no crezca de golpe */
             transition: all 0.3s ease-out;
-            cursor: zoom-in; /* Cambia el cursor a una lupa */
+            cursor: zoom-in;
         }
+
         @keyframes caer {
             0% { top: -150px; transform: rotate(0deg); opacity: 0; }
             10% { opacity: 1; }
-            100% { top: 110vh; transform: rotate(20deg); opacity: 1; } /* Termina abajo del todo */
+            100% { top: 110vh; transform: rotate(20deg); opacity: 1; }
         }
+
+        /* --- VIDEO LATERAL --- */
         #side-video-container {
             position: absolute;
-            right: 5%; /* Lo coloca a la derecha */
+            right: 5%;
             top: 50%;
-            transform: translateY(-50%); /* Lo centra verticalmente */
-            width: 250px; /* Tamaño del video */
-            border: 8px solid white; /* Marco tipo foto */
+            transform: translateY(-50%);
+            width: 250px;
+            border: 8px solid white;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            opacity: 0; /* Invisible al principio */
-            transition: opacity 1s ease-in-out; /* Aparece suavemente */
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
             z-index: 0;
             border-radius: 5px;
             background: #000;
         }
 
-        video {
-            width: 100%;
-            display: block;
-        }
+        video { width: 100%; display: block; }
 
-        /* 1. EL BOLSILLO */
+        /* --- PARTES DEL SOBRE --- */
         .pocket {
-            position: absolute;
-            bottom: 0;
-            left: -150px; /* Centra el bolsillo debajo de la carta */
-            width: 50px;
-            height: 0;
-            border-left: 150px solid #55df6c;
-            border-right: 150px solid #a4ffbb;
-            border-bottom: 110px solid #a4e494; 
-            border-top: 90px solid transparent;
+            position: absolute; bottom: 0; left: 0; width: 0; height: 0;
+            border-left: 150px solid #c93b3b;
+            border-right: 150px solid #c93b3b;
+            border-bottom: 120px solid #e04e4e; 
+            border-top: 80px solid transparent;
             z-index: 3; 
         }
 
-        /* 2. LA CARTA - Mantiene tus valores de posición */
         .letter {
-            position: absolute;
-            top: -200px; /* Tu valor original */
-            left: -150px;
-            width: 350px;
-            height: 180px; /* Tu altura original */
-            background-color: white;
-            padding: 20px;
-            box-sizing: border-box;
+            position: absolute; bottom: 0; left: 15px; width: 270px; height: 180px;
+            background-color: white; padding: 20px; box-sizing: border-box;
             z-index: 1;
-            transition: transform 0.6s ease-in-out, height 0.6s ease-in-out; /* Añadimos height a la transición */
-            
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start; /* Alineado arriba para que el texto no salte al crecer */
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            overflow: hidden;
+            transition: transform 0.6s ease-in-out, height 0.6s ease-in-out;
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+            text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); overflow: hidden;
         }
         
-        .letter h1 { margin: 10px 0; font-family: 'Arial', sans-serif; color: #333; font-size: 20px; }
-        .letter p { margin: 5px 0; font-family: 'Arial', sans-serif; color: #555; font-size: 14px; }
+        .letter h1 { margin: 10px 0; font-family: 'Arial', sans-serif; color: #333; font-size: 18px; }
+        .letter p { margin: 5px 0; font-family: 'Arial', sans-serif; color: #555; font-size: 12px; }
 
-        /* 3. LA TAPA */
         .flap {
-            position: absolute;
-            top: -200px; /* Tu valor original */
-            left: -150px; /* Centra la tapa debajo de la carta */
-            width: 50px; /* Ancho extendido para cubrir toda la carta al rotar */
-            height: 0;
-            border-left: 150px solid transparent;
-            border-right: 150px solid transparent;
-            border-top: 110px solid #7ce7a5;
-            transform-origin: top;
-            z-index: 4; 
+            position: absolute; top: 0; left: 0; width: 0; height: 0;
+            border-left: 150px solid transparent; border-right: 150px solid transparent;
+            border-top: 110px solid #e04e4e;
+            transform-origin: top; z-index: 4; 
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.2s 0.2s;
         }
-        .letter video {
-            width: 100%;      /* Ancho completo del papel disponible */
-            height: auto;     /* Altura automática para no deformarse */
-            max-height: 120px; /* Límite de altura para que no se salga */
-            border-radius: 4px; /* Bordes redondeados bonitos */
-            object-fit: cover; /* Asegura que rellene el espacio bien */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        /* --- ANIMACIÓN --- */
 
+        .letter video {
+            width: 100%; height: auto; max-height: 120px;
+            border-radius: 4px; object-fit: cover; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-top: 5px;
+        }
+
+        /* --- ANIMACIÓN --- */
         #check:checked ~ .container .envelope .flap {
-            transform: rotateX(180deg);
-            z-index: 0;
-            transition-delay: 0s;
+            transform: rotateX(180deg); z-index: 0; transition-delay: 0s;
         }
 
         #check:checked ~ .container .envelope .letter {
-            /* Mantenemos tu subida original pero expandimos la altura */
-            transform: translateY(-350px); 
-            height: 600px; /* Aquí crece hacia abajo esos 300px aprox adicionales */
-            z-index: 2;
-            transition-delay: 0.5s; 
+            transform: translateY(-250px); 
+            height: 450px; 
+            z-index: 2; transition-delay: 0.5s; 
         }
-        #check:checked ~ #side-video-container {
-            opacity: 1; /* Se vuelve visible */
-        }
+
+        #check:checked ~ #side-video-container { opacity: 1; }
 
     </style>
 </head>
 <body>
+
     <input type="checkbox" id="check">
-<div id="side-video-container">
-        <video id="myVideo" src="ssstik.io_@diwerlo_1770701992905.mp4"loop></video>
+
+    <div id="side-video-container">
+        <video id="myVideo" src="kenia/ssstik.io_@diwerlo_1770701992905.mp4" loop></video>
     </div>
+
     <div class="container">
         <label for="check" class="envelope">
             <div class="flap"></div>
@@ -183,195 +147,155 @@
                 <h1>Para la bebe de mi corazon</h1>
                 <p>¿Quieres ser mi valentine?</p>
                 <p>shi o nous</p>
-                <p>espero que te guste mi bebe
-                    <video src="ssstik.io_@muichiro___am_1770701797810 (1).mp4" autoplay muted loop playsinline></video>
-                    se que no es mucho pero lo hice con todo mi amor</p>
-                    <p>muak muak preciosa chula mi vida hermosa muak di que si o lloro</p>
-                    <p>y de paso gracias miamor por este 11 mes se que dijimos no celebrar pero io no puedo asi que hice algo pqueno te amo mi vida sdjkdjskdsmkj</p>
-                    
+                <p>espero que te guste mi bebe</p>
+                
+                <video src="kenia/ssstik.io_@muichiro___am_1770701797810 (1).mp4" autoplay muted loop playsinline></video>
+                
+                <p>se que no es mucho pero lo hice con todo mi amor</p>
+                <p>muak muak preciosa chula mi vida hermosa muak di que si o lloro</p>
+                <p>y de paso gracias miamor por este 11 mes se que dijimos no celebrar pero io no puedo asi que hice algo pqueno te amo mi vida sdjkdjskdsmkj</p>
             </div>
         </label>
-        
-        <script>
+    </div>
+
+    <script>
+        // LISTA DE FOTOS (Ahora todas tienen "kenia/" escrito)
         const baseDeDatos = [
-            "WhatsApp Image 2025-12-30 at 11.27.16 AM.jpeg",
-            "WhatsApp Image 2025-12-30 at 11.27.19 AM.jpeg",
-            "WhatsApp Image 2025-12-30 at 11.27.21 AM.jpeg",
-            "WhatsApp Image 2025-12-30 at 11.27.22 AM.jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.33 AM (1).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.37 AM (2).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.38 AM (3).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.41 AM (4).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.42 AM (5).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.43 AM (1).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.38 AM (9).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.38 AM (10).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.38 AM.jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.39 AM (1).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.39 AM (2).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.39 AM (3).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.39 AM (4).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.39 AM (5).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.39 AM (6).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.39 AM (7).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.39 AM (8).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.39 AM (9).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.41 AM (4).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.41 AM (5).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.41 AM (6).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.41 AM (7).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.41 AM (8).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.41 AM (9).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.41 AM (10).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.41 AM (11).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.41 AM.jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.42 AM (1).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.42 AM (2).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.42 AM (3).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.42 AM (4).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.42 AM (5).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.38 AM (9).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.38 AM (10).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.38 AM.jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.39 AM (1).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.39 AM (2).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.39 AM (3).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.39 AM (4).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.39 AM (5).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.39 AM (6).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.39 AM (7).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.39 AM (8).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.39 AM (9).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.41 AM (4).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.41 AM (5).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.41 AM (6).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.41 AM (7).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.41 AM (8).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.41 AM (9).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.41 AM (10).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.41 AM (11).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.41 AM.jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.42 AM (1).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.42 AM (2).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.42 AM (3).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.42 AM (4).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.42 AM (5).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.43 AM (1).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.43 AM (2).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.43 AM (3).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.43 AM (4).jpeg",
-            "WhatsApp Image 2025-12-30 at 11.59.43 AM (5).jpeg",
-            
-            // --- GRUPO 2: FOTOS "IMG" (Suelen ser .jpg) ---
-            "IMG-20251206-WA0075.jpg",
-            "IMG-20251206-WA0076.jpg",
-            "IMG-20251206-WA0077.jpg",
-            "IMG-20251206-WA0078.jpg",
-            "IMG-20251206-WA0079.jpg",
-            "IMG-20251206-WA0080.jpg",
-            "IMG-20251206-WA0081.jpg",
-            "IMG-20251206-WA0082.jpg",
-            "IMG-20251206-WA0083.jpg",
-            "IMG-20251206-WA0084.jpg",
-            "IMG-20251206-WA0085.jpg",
-            "IMG-20251206-WA0086.jpg",
-            "IMG-20251206-WA0087.jpg",
-            "IMG-20251206-WA0088.jpg",
-            
-            // --- GRUPO 3: FOTOS DE LA CARPETA MIXTA ---
-            "IMG-20251206-WA0009.jpg",
-            "IMG-20251206-WA0010.jpg",
-            "IMG-20251206-WA0011.jpg",
-            "IMG-20251206-WA0012.jpg",
-            "IMG-20251206-WA0013.jpg",
-            "IMG-20251206-WA0014.jpg",
-            "IMG-20251206-WA0015.jpg",
-            "IMG-20251206-WA0016.jpg",
-            "IMG-20251206-WA0017.jpg",
-            "IMG-20251206-WA0018.jpg",
-            
-            // --- GRUPO 4: FOTOS FECHA SEPTIEMBRE (20250916) ---
-            "IMG-20250916-WA0208.jpg",
-            "IMG-20250916-WA0209.jpg",
-            "IMG-20250916-WA0210.jpg",
-            "IMG-20250916-WA0211.jpg",
-            "IMG-20250916-WA0212.jpg",
-            "IMG-20250916-WA0213.jpg",
-            "IMG-20250916-WA0214.jpg",
-            "IMG-20250916-WA0215.jpg",
-            "IMG-20250916-WA0217.jpg",
-            "IMG-20250916-WA0218.jpg",
-            "IMG-20250916-WA0219.jpg",
-            "IMG-20250916-WA0220.jpg",
-            "IMG-20250916-WA0222.jpg",
-            "IMG-20250916-WA0223.jpg",
-            "IMG-20250916-WA0224.jpg",
-            "IMG-20250916-WA0225.jpg",
-            
-            // --- GRUPO 5: FOTOS FECHA DICIEMBRE Y OTROS ---
-            "IMG-20250916-WA0020.jpg",
-            "IMG-20250916-WA0023.jpg",
-            "IMG-20250916-WA0030.jpg",
-            "IMG-20250916-WA0033.jpg",
-            "IMG-20250916-WA0034.jpg",
-            "IMG-20250916-WA0036.jpg",
-            "IMG-20250916-WA0037.jpg",
-            "IMG-20250916-WA0038.jpg",
-            "IMG-20250916-WA0041.jpg",
-            "IMG-20250916-WA0042.jpg",
-            "IMG-20250916-WA0044.jpg",
-            "IMG-20250916-WA0045.jpg",
-            "IMG-20250916-WA0051.jpg",
-            "IMG-20250916-WA0058.jpg",
-            "IMG-20250916-WA0059.jpg"
+            "kenia/WhatsApp Image 2025-12-30 at 11.27.16 AM.jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.27.19 AM.jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.27.21 AM.jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.27.22 AM.jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.33 AM (1).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.37 AM (2).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.38 AM (3).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.41 AM (4).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.42 AM (5).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.43 AM (1).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.38 AM (9).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.38 AM (10).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.38 AM.jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.39 AM (1).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.39 AM (2).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.39 AM (3).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.39 AM (4).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.39 AM (5).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.39 AM (6).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.39 AM (7).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.39 AM (8).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.39 AM (9).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.41 AM (4).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.41 AM (5).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.41 AM (6).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.41 AM (7).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.41 AM (8).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.41 AM (9).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.41 AM (10).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.41 AM (11).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.41 AM.jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.42 AM (1).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.42 AM (2).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.42 AM (3).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.42 AM (4).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.42 AM (5).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.43 AM (1).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.43 AM (2).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.43 AM (3).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.43 AM (4).jpeg",
+            "kenia/WhatsApp Image 2025-12-30 at 11.59.43 AM (5).jpeg",
+            "kenia/IMG-20251206-WA0075.jpg",
+            "kenia/IMG-20251206-WA0076.jpg",
+            "kenia/IMG-20251206-WA0077.jpg",
+            "kenia/IMG-20251206-WA0078.jpg",
+            "kenia/IMG-20251206-WA0079.jpg",
+            "kenia/IMG-20251206-WA0080.jpg",
+            "kenia/IMG-20251206-WA0081.jpg",
+            "kenia/IMG-20251206-WA0082.jpg",
+            "kenia/IMG-20251206-WA0083.jpg",
+            "kenia/IMG-20251206-WA0084.jpg",
+            "kenia/IMG-20251206-WA0085.jpg",
+            "kenia/IMG-20251206-WA0086.jpg",
+            "kenia/IMG-20251206-WA0087.jpg",
+            "kenia/IMG-20251206-WA0088.jpg",
+            "kenia/IMG-20251206-WA0009.jpg",
+            "kenia/IMG-20251206-WA0010.jpg",
+            "kenia/IMG-20251206-WA0011.jpg",
+            "kenia/IMG-20251206-WA0012.jpg",
+            "kenia/IMG-20251206-WA0013.jpg",
+            "kenia/IMG-20251206-WA0014.jpg",
+            "kenia/IMG-20251206-WA0015.jpg",
+            "kenia/IMG-20251206-WA0016.jpg",
+            "kenia/IMG-20251206-WA0017.jpg",
+            "kenia/IMG-20251206-WA0018.jpg",
+            "kenia/IMG-20250916-WA0208.jpg",
+            "kenia/IMG-20250916-WA0209.jpg",
+            "kenia/IMG-20250916-WA0210.jpg",
+            "kenia/IMG-20250916-WA0211.jpg",
+            "kenia/IMG-20250916-WA0212.jpg",
+            "kenia/IMG-20250916-WA0213.jpg",
+            "kenia/IMG-20250916-WA0214.jpg",
+            "kenia/IMG-20250916-WA0215.jpg",
+            "kenia/IMG-20250916-WA0217.jpg",
+            "kenia/IMG-20250916-WA0218.jpg",
+            "kenia/IMG-20250916-WA0219.jpg",
+            "kenia/IMG-20250916-WA0220.jpg",
+            "kenia/IMG-20250916-WA0222.jpg",
+            "kenia/IMG-20250916-WA0223.jpg",
+            "kenia/IMG-20250916-WA0224.jpg",
+            "kenia/IMG-20250916-WA0225.jpg",
+            "kenia/IMG-20250916-WA0020.jpg",
+            "kenia/IMG-20250916-WA0023.jpg",
+            "kenia/IMG-20250916-WA0030.jpg",
+            "kenia/IMG-20250916-WA0033.jpg",
+            "kenia/IMG-20250916-WA0034.jpg",
+            "kenia/IMG-20250916-WA0036.jpg",
+            "kenia/IMG-20250916-WA0037.jpg",
+            "kenia/IMG-20250916-WA0038.jpg",
+            "kenia/IMG-20250916-WA0041.jpg",
+            "kenia/IMG-20250916-WA0042.jpg",
+            "kenia/IMG-20250916-WA0044.jpg",
+            "kenia/IMG-20250916-WA0045.jpg",
+            "kenia/IMG-20250916-WA0051.jpg",
+            "kenia/IMG-20250916-WA0058.jpg",
+            "kenia/IMG-20250916-WA0059.jpg"
         ];
+
         function lanzarFotos() {
             const container = document.body;
 
-            // Recorremos la "Base de Datos"
             baseDeDatos.forEach((foto, index) => {
                 const img = document.createElement('img');
+                
+                // --- COMO LA LISTA YA TIENE "kenia/", AQUÍ SOLO USAMOS "foto" ---
                 img.src = foto;
+                // ----------------------------------------------------------------
+                
                 img.classList.add('falling-img');
 
-                // --- ALEATORIEDAD (Para que se vea natural) ---
-                
-                // Posición horizontal aleatoria (entre 5% y 90% de la pantalla)
-                img.style.left = Math.random() * 85 + 5 + '%';
-                
-                // Velocidad de caída aleatoria (entre 3 y 8 segundos)
+                img.style.left = Math.random() * 90 + 5 + '%';
                 const duracion = Math.random() * 5 + 3; 
                 img.style.animation = `caer ${duracion}s linear infinite`;
-                
-                // Retraso aleatorio (para que no caigan todas de golpe)
                 const retraso = Math.random() * 5; 
                 img.style.animationDelay = retraso + 's';
 
-                // Agregar al cuerpo de la página
                 container.appendChild(img);
             });
-            }
+        }
+
         const checkbox = document.getElementById('check');
         const video = document.getElementById('myVideo');
-        
 
-        // Escuchar cuando alguien hace clic en el sobre
         checkbox.addEventListener('change', function() {
             if(this.checked) {
-                // Si el sobre se abre:
                 lanzarFotos();
-                video.currentTime = 0; // Reinicia el video
-                video.play();          // Dale play
-                video.muted = false;   // ACTIVA EL SONIDO
-                video.volume = 0.8;    // Volumen al 80%
+                video.currentTime = 0;
+                video.play();
+                video.muted = false; 
+                video.volume = 0.8;
             } else {
-                // Si el sobre se cierra (opcional):
                 video.pause();
             }
         });
-        
     </script>
-    </div>
 
 </body>
 </html>
