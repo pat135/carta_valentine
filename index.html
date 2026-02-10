@@ -79,41 +79,126 @@
         }
 
         video { width: 100%; display: block; }
+ /* 1. EL BOLSILLO */
 
-        /* --- PARTES DEL SOBRE --- */
         .pocket {
-            position: absolute; bottom: 0; left: 0; width: 0; height: 0;
-            border-left: 150px solid #c93b3b;
-            border-right: 150px solid #c93b3b;
-            border-bottom: 120px solid #e04e4e; 
-            border-top: 80px solid transparent;
+
+            position: absolute;
+
+            bottom: 0;
+
+            left: -150px; /* Centra el bolsillo debajo de la carta */
+
+            width: 50px;
+
+            height: 0;
+
+            border-left: 150px solid #55df6c;
+
+            border-right: 150px solid #a4ffbb;
+
+            border-bottom: 110px solid #a4e494; 
+
+            border-top: 90px solid transparent;
+
             z-index: 3; 
+
         }
+
+
+
+        /* 2. LA CARTA - Mantiene tus valores de posición */
 
         .letter {
-            position: absolute; bottom: 0; left: 15px; width: 270px; height: 180px;
-            background-color: white; padding: 20px; box-sizing: border-box;
+
+            position: absolute;
+
+            top: -200px; /* Tu valor original */
+
+            left: -150px;
+
+            width: 350px;
+
+            height: 180px; /* Tu altura original */
+
+            background-color: white;
+
+            padding: 20px;
+
+            box-sizing: border-box;
+
             z-index: 1;
-            transition: transform 0.6s ease-in-out, height 0.6s ease-in-out;
-            display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
-            text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); overflow: hidden;
+
+            transition: transform 0.6s ease-in-out, height 0.6s ease-in-out; /* Añadimos height a la transición */
+
+            
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: flex-start; /* Alineado arriba para que el texto no salte al crecer */
+
+            text-align: center;
+
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+            overflow: hidden;
+
         }
+
         
-        .letter h1 { margin: 10px 0; font-family: 'Arial', sans-serif; color: #333; font-size: 18px; }
-        .letter p { margin: 5px 0; font-family: 'Arial', sans-serif; color: #555; font-size: 12px; }
+
+        .letter h1 { margin: 10px 0; font-family: 'Arial', sans-serif; color: #333; font-size: 20px; }
+
+        .letter p { margin: 5px 0; font-family: 'Arial', sans-serif; color: #555; font-size: 14px; }
+
+
+
+        /* 3. LA TAPA */
 
         .flap {
-            position: absolute; top: 0; left: 0; width: 0; height: 0;
-            border-left: 150px solid transparent; border-right: 150px solid transparent;
-            border-top: 110px solid #e04e4e;
-            transform-origin: top; z-index: 4; 
+
+            position: absolute;
+
+            top: -200px; /* Tu valor original */
+
+            left: -150px; /* Centra la tapa debajo de la carta */
+
+            width: 50px; /* Ancho extendido para cubrir toda la carta al rotar */
+
+            height: 0;
+
+            border-left: 150px solid transparent;
+
+            border-right: 150px solid transparent;
+
+            border-top: 110px solid #7ce7a5;
+
+            transform-origin: top;
+
+            z-index: 4; 
+
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.2s 0.2s;
+
         }
 
         .letter video {
-            width: 100%; height: auto; max-height: 120px;
-            border-radius: 4px; object-fit: cover; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-top: 5px;
+
+            width: 100%;      /* Ancho completo del papel disponible */
+
+            height: auto;     /* Altura automática para no deformarse */
+
+            max-height: 120px; /* Límite de altura para que no se salga */
+
+            border-radius: 4px; /* Bordes redondeados bonitos */
+
+            object-fit: cover; /* Asegura que rellene el espacio bien */
+
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
         }
 
         /* --- ANIMACIÓN --- */
@@ -299,3 +384,4 @@
 
 </body>
 </html>
+
