@@ -207,11 +207,12 @@
         }
 
         #check:checked ~ .container .envelope .letter {
-            transform: translateY(-250px); 
-            height: 450px; 
-            z-index: 2; transition-delay: 0.5s; 
+            /* Mantenemos tu subida original pero expandimos la altura */
+            transform: translateY(-350px); 
+            height: 600px; /* Aquí crece hacia abajo esos 300px aprox adicionales */
+            z-index: 2;
+            transition-delay: 0.5s; 
         }
-
         #check:checked ~ #side-video-container { opacity: 1; }
 
     </style>
@@ -384,4 +385,5 @@
 
 </body>
 </html>
+
 
